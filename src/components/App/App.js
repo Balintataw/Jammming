@@ -9,9 +9,22 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchResults = [{name}, {artist}, {album}];
+      searchResults: [{name}, {artist}, {album}],  //needs this? restricted use of 'name'?
+      playlistName: 'New Playlist',
+      playlistTracks: [{name}, {artist}, {album}]
+    }
+    this.addTrack = this.addTrack.bind(this);
   }
 
+  addTrack(track) {
+    let notInPlaylist = this.state.playlist.every(playlistTrack =>
+      playlistTrack.id !== track.id;                 // step 41
+      if (notInPlaylist) {
+        playlistTracks.push({track});
+      this.setState({playlistTracks: playlistTracks});
+      }
+    )
+  }
 
   render() {
     return (
@@ -20,8 +33,8 @@ class App extends Component {
         <div className="App">
           <SearchBar />                             //14 16 and 17
           <div className="App-playlist">
-            <SearchResults={this.state.searchResults}/>
-            <Playlist />
+            <SearchResults searchResults={this.state.searchResults} onAdd={this.addTrack}/>
+            <Playlist playlistName={this.state.playlistName} playlistTracks={this.state.playlistTracks}/>
           </div>
         </div>
       </div>
