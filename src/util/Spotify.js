@@ -12,7 +12,7 @@ const Spotify = {
     const accessTokenMatch = window.location.href.match(/access_token=([^&]*)/)
     const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/)
 
-    if (accessTokenMatch && expiresInMatch) {                                //check starting at lesson 79
+    if (accessTokenMatch && expiresInMatch) {                                //check starting at 79
       accessToken = accessTokenMatch[1];                                     //token is array[1]
       let expiresIn = Number(expiresInMatch[1]);                             //convert to number
       window.setTimeout(() => accessToken = '', expiresIn * 1000);
